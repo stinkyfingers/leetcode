@@ -18,3 +18,9 @@ func (l *ListNode) String() string {
 	}
 	return builder.String()
 }
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}

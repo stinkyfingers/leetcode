@@ -10,6 +10,7 @@ import (
 // 1 => 1
 // 2 => 5
 // https://www.youtube.com/watch?v=YDf982Lb84o
+// uses dynamic programming
 func numTrees(n int) int {
 	nums := map[int]int{0: 1, 1: 1}
 	for i := 2; i <= n; i++ {
