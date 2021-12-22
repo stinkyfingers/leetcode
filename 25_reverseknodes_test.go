@@ -10,54 +10,34 @@ import (
 // UNSOLVED...so far
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	current := head
-	var prev *ListNode
-	var end, prevEnd *ListNode
-	// var newHead *ListNode
-	next := head
-	i := 0
+	var newHead *ListNode
 
-	for current != nil {
-		fmt.Println(i, current, prev)
+	list := []*ListNode{}
 
-		if i == 0 {
-			end = current
-		}
-
-		if i < k {
-			next = current.Next
-			current.Next = prev
-			prev = current
-			current = next
-			i++
-			continue
-		}
-		if i == k {
-			if prevEnd != nil {
-				prevEnd.Next = current
-			}
-			prevEnd = end
-
-			current = current.Next
-			i = 0
-		}
+	for head != nil {
+		list = append(list, head)
+		head = head.Next
 	}
-	return prev
-}
 
-// reverse a singly linked list
-func reverseList(head *ListNode, k int) *ListNode {
-	current := head
-	var prev *ListNode
-	next := head
+	revList := []*ListNode{}
+	iteration := 1
+	for {
+		// if fewer than k left
+		if k*iteration > len(list) {
+			revList = append(revList, list[(k-1)*iteration:]...)
+			break
+		}
 
-	for current != nil {
-		next = current.Next
-		current.Next = prev
-		prev = current
-		current = next
+		// else
+		for i := (k - 1) * iteration; i >= (iteration-1)*k; i-- {
+			revList = append(revList, list[i])
+		}
+		iteration++
 	}
-	return prev
+
+	fmt.Println(revList)
+
+	return newHead
 }
 
 /* testing */

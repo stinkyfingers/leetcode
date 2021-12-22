@@ -91,18 +91,18 @@ func TestMaximalRectangle(t *testing.T) {
 			input:    [][]byte{{1, 0, 1, 0, 0}, {1, 0, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 0, 0, 1, 0}},
 			expected: 6,
 		},
-		// {
-		// 	input:    [][]byte{},
-		// 	expected: 0,
-		// },
-		// {
-		// 	input:    [][]byte{{0}},
-		// 	expected: 0,
-		// },
-		// {
-		// 	input:    [][]byte{{1}},
-		// 	expected: 1,
-		// },
+		{
+			input:    [][]byte{},
+			expected: 0,
+		},
+		{
+			input:    [][]byte{{0}},
+			expected: 0,
+		},
+		{
+			input:    [][]byte{{1}},
+			expected: 1,
+		},
 	}
 	for i, test := range tests {
 		res := maximalRectangle(test.input)
