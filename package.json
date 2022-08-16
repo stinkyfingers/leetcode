@@ -1,0 +1,19 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/stinkyfingers/leetcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/stinkyfingers/leetcode#readme",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
