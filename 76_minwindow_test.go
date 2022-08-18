@@ -54,26 +54,6 @@ func containsSubstring(s, t map[rune]int) bool {
 	return true
 }
 
-// returns true if s contains t
-func containsSubstringX(s string, t string) bool {
-	temp := make(map[rune]int)
-	for _, r := range s {
-		if _, ok := temp[r]; !ok {
-			temp[r] = 1
-		} else {
-			temp[r]++
-		}
-	}
-
-	for _, r := range t {
-		if quantity, ok := temp[r]; !ok || quantity < 1 {
-			return false
-		}
-		temp[r]--
-	}
-	return true
-}
-
 // map[0:1 3:0 9:0 12:1]
 func TestMinWindow(t *testing.T) {
 	tests := []struct {
@@ -139,36 +119,6 @@ func TestContainsSubstring(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
 			res := containsSubstring(tt.s, tt.t)
-			require.Equal(t, tt.exp, res)
-		})
-	}
-}
-
-func TestContainsSubstringX(t *testing.T) {
-	tests := []struct {
-		s   string
-		t   string
-		exp bool
-	}{
-		{
-			s:   "ABC",
-			t:   "ABC",
-			exp: true,
-		},
-		{
-			s:   "ABC",
-			t:   "ABA",
-			exp: false,
-		},
-		{
-			s:   "ABA",
-			t:   "BAA",
-			exp: true,
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.s, func(t *testing.T) {
-			res := containsSubstringX(tt.s, tt.t)
 			require.Equal(t, tt.exp, res)
 		})
 	}
