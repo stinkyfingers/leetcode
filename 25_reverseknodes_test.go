@@ -8,8 +8,27 @@ import (
 
 // https://leetcode.com/problems/reverse-nodes-in-k-group/
 // UNSOLVED...so far
-
 func reverseKGroup(head *ListNode, k int) *ListNode {
+	var newHead, newCurrent *ListNode
+	m := make(map[int]*ListNode)
+	current := head
+	for {
+		for i := k - 1; i >= 0; i-- {
+			m[i] = current
+			// TODO - if no current.Next
+			current = current.Next
+		}
+		for i := 0; i < k; i++ {
+			newCurrent = m[i]
+			if i < k-1 {
+				newCurrent.Next = m[i]
+			}
+		}
+	}
+	return newHead
+}
+
+func reverseKGroupOLD(head *ListNode, k int) *ListNode {
 	var newHead *ListNode
 
 	list := []*ListNode{}
